@@ -46,6 +46,7 @@ def save_to_dataframe(rates, currency_symbol):
     create_dir(path)
     # save to csv file format
     rates_frame.to_csv(f'{path}/{currency_symbol}_mt5.csv')
+    logging.info(f"Data Saved to the directory:: {path}")
     return rates_frame
 
 def strip_date(date_string):
@@ -92,7 +93,6 @@ def get_mt5_data(currency_symbol = "XAUUSD", timeframe_val= mt5.TIMEFRAME_M1, fr
     rates_frame = save_to_dataframe(rates, currency_symbol)
     logging.info(f"Display top 10 rows of data for {currency_symbol} with a date range from {fromdate} to {todate}")
     # display data
-    print(f"\nDisplay top 10 rows of data for {currency_symbol} with a date range from {fromdate} to {todate}\n")
     print(rates_frame.head(10)) 
 
     return rates_frame   
