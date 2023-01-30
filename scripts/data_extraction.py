@@ -56,6 +56,28 @@ def create_table(table_name, Base):
     
     return User
 
+def extract(Base,currency_symbol, timeframe_val, fromdate, todate):
+    
+    name = currency_symbol.lower()+'_'+table_names[timeframe_val]
+    table_name = name
+
+    # Create SQLAlchemy Base object and User class using the create_table function
+    #Base = declarative_base()
+    User = create_table(table_name, Base)
+    # Create a SQLAlchemy session
+    session = Sessions()
+    # Get data from the MT5 platform using the get_mt5_data function
+    df = get_mt5_data(currency_symbol,timeframe_val, fromdate, todate)
+    # Log the start of data insertion into the database
+    logging.info("Start inserting data into {}".format(table_name))
+    # Insert the data into the database using the bulk_insert_mappings method
+    session.bulk_insert_mappings(User,df.to_dict(orient='records'))
+    # Commit the transaction to save the changes to the database
+    session.commit()
+    # Log the completion of data insertion and the successful completion of the program
+    logging.info("Data insertion completed at {}".format(datetime.now()))
+    logging.info("Program completed successfully.")
+
 if __name__ == '__main__':
     """
     Main program that retrieves data from the MT5 platform and inserts it into the database.
@@ -86,22 +108,7 @@ if __name__ == '__main__':
     fromdate = args.fromdate
     todate = args.todate
 
-    name = currency_symbol.lower()+'_'+table_names[timeframe_val]
-    table_name = name
-
-    # Create SQLAlchemy Base object and User class using the create_table function
     Base = declarative_base()
-    User = create_table(table_name, Base)
-    # Create a SQLAlchemy session
-    session = Sessions()
-    # Get data from the MT5 platform using the get_mt5_data function
-    df = get_mt5_data(currency_symbol,timeframe_val, fromdate, todate)
-    # Log the start of data insertion into the database
-    logging.info("Start inserting data into {}".format(table_name))
-    # Insert the data into the database using the bulk_insert_mappings method
-    session.bulk_insert_mappings(User,df.to_dict(orient='records'))
-    # Commit the transaction to save the changes to the database
-    session.commit()
-    # Log the completion of data insertion and the successful completion of the program
-    logging.info("Data insertion completed at {}".format(datetime.now()))
-    logging.info("Program completed successfully.")
+    extract(Base,currency_symbol, timeframe_val, fromdate, todate)
+
+
