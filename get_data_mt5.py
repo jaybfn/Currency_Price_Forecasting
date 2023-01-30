@@ -45,7 +45,7 @@ def get_mt5_data(currency_symbol = "XAUUSD", timeframe_val= mt5.TIMEFRAME_M1):
     # convert time in seconds into the datetime format
     rates_frame['time']=pd.to_datetime(rates_frame['time'], unit='s')
     rates_frame.rename(columns = {'time':'date'}, inplace = True)
-    rates_frame.to_csv(f'../data/{currency_symbol}_mt5.csv')
+    rates_frame.to_csv(f'data/{currency_symbol}_mt5.csv')
     # display data
     print("\nDisplay dataframe with data")
     print(rates_frame.head(10))    
@@ -55,7 +55,7 @@ def get_mt5_data(currency_symbol = "XAUUSD", timeframe_val= mt5.TIMEFRAME_M1):
 
 if __name__=='__main__':
 
-    currency_symbol = "EURUSD"
-    timeframe_val= mt5.TIMEFRAME_M1
+    currency_symbol = "XAUUSD"
+    timeframe_val= mt5.TIMEFRAME_D1
 
     get_mt5_data(currency_symbol,timeframe_val)
