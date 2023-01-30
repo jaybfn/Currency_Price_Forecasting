@@ -1,9 +1,19 @@
+"""
+    The code is used to extract data from MetaTrader5 using the "MetaTrader5" library 
+    and store the data into a database using SQLAlchemy. The code uses a bulk insert 
+    approach to insert the data more efficiently into the database. It also logs the 
+    program's execution time and status to a log file.
+
+"""
+
 import pandas as pd
 import numpy as np
 import logging
 import MetaTrader5 as mt5
 from sqlalchemy import Column, Integer,Date, Float
 from sqlalchemy.ext.declarative import declarative_base
+
+# local files
 from session import *
 from get_price import *
 
