@@ -62,7 +62,6 @@ def extract(Base,currency_symbol, timeframe_val, fromdate, todate):
     table_name = name
 
     # Create SQLAlchemy Base object and User class using the create_table function
-    #Base = declarative_base()
     User = create_table(table_name, Base)
     # Create a SQLAlchemy session
     session = Sessions()
