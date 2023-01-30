@@ -3,14 +3,44 @@
 # Import all the necessary libraries!
 import os
 import logging
+import argparse
 import pandas as pd
 import pytz
 from datetime import datetime
 import MetaTrader5 as mt5
+
 logging.basicConfig(filename='mt5_data_extraction.log', level=logging.DEBUG)
 # Set pandas options for display
 pd.set_option('display.max_columns', 500) # number of columns to be displayed
 pd.set_option('display.width', 1500)      # max table width to display
+
+# mt5 timeframes resolution for data extraction
+timeframe_mapping = {
+
+        "M1": mt5.TIMEFRAME_M1,
+        "M5": mt5.TIMEFRAME_M5,
+        "M15": mt5.TIMEFRAME_M5,
+        "M30": mt5.TIMEFRAME_M30,
+        "H1": mt5.TIMEFRAME_H1,
+        "H4": mt5.TIMEFRAME_H4,
+        "D1": mt5.TIMEFRAME_D1,
+        "W1": mt5.TIMEFRAME_W1,
+        "MN1": mt5.TIMEFRAME_MN1
+
+    }
+
+# time frame explanation used in argpars argument
+timeframe = {
+        "M1": '1 minute',
+        "M5": '5 minute',
+        "M15": '15 minute',
+        "M30": '30 minute',
+        "H1": '1 hour',
+        "H4": '4 hour',
+        "D1": 'daily',
+        "W1":'weekly',
+        "MN1": 'monthly'
+    }
 
 def create_dir(path):
     """
@@ -62,7 +92,7 @@ def set_daterange(from_date, to_date):
     Converts string dates to datetime objects in UTC time zone
     """
     timezone = pytz.timezone("Etc/UTC")
-    # extrating day, month and year from date string
+    # extracting day, month and year from date string
     start_day, start_month, start_year = strip_date(from_date)
     end_day, end_month, end_year = strip_date(to_date)
     # setting the time to UTC timezone.
@@ -71,7 +101,7 @@ def set_daterange(from_date, to_date):
 
     return utc_from, utc_to
 
-def get_mt5_data(currency_symbol = "XAUUSD", timeframe_val= mt5.TIMEFRAME_M1, fromdate = '01-01-2002', todate = '31-12-2020'):
+def get_mt5_data(currency_symbol = "XAUUSD", timeframe_val= 'D1', fromdate = '01-01-2002', todate = '31-12-2020'):
 
     """ This function extracts stock or currency data from mt5 terminal and saves it to a csv file:
     the function needs 2 inputs:
@@ -85,6 +115,8 @@ def get_mt5_data(currency_symbol = "XAUUSD", timeframe_val= mt5.TIMEFRAME_M1, fr
     initialize_mt5()
     # # set time zone to UTC
     utc_from, utc_to = set_daterange(fromdate, todate)
+
+    timeframe_val = timeframe_mapping[timeframe_val]
     # getting currency/stock values from mt5 terminal
     rates = mt5.copy_rates_range(currency_symbol, timeframe_val, utc_from, utc_to)
     # once extracted, shutdown mt5 session
@@ -99,8 +131,13 @@ def get_mt5_data(currency_symbol = "XAUUSD", timeframe_val= mt5.TIMEFRAME_M1, fr
 
 if __name__=='__main__':
 
-    currency_symbol = "XAUUSD"
-    timeframe_val= mt5.TIMEFRAME_D1
-    fromdate = '01-01-2002'
-    todate = '31-12-2020'
-    data = get_mt5_data(currency_symbol,timeframe_val, fromdate, todate)
+
+    parser = argparse.ArgumentParser(description='Extract data directly from MetaTrader 5')
+    parser.add_argument('-c', '--currency_symbol', type=str, default='XAUUSD', help='Currency Symbol (e.g. XAUUSD, USDEUR)')
+    parser.add_argument('-t', '--timeframe_val', type=str, default='mt5.TIMEFRAME_M1', help=f'Resolution {timeframe}')
+    parser.add_argument('-f', '--fromdate', type=str, default='01-01-2002', help='From Date (e.g. 01-01-2002)')
+    parser.add_argument('-o', '--todate', type=str, default='31-12-2020', help='To Date (e.g. 31-12-2020)')
+
+    args = parser.parse_args()
+
+    get_mt5_data(args.currency_symbol, args.timeframe_val, args.fromdate, args.todate)

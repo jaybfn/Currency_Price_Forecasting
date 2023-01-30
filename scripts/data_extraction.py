@@ -8,6 +8,7 @@
 
 import pandas as pd
 import numpy as np
+import argparse
 import logging
 import MetaTrader5 as mt5
 from sqlalchemy import Column, Integer,Date, Float
@@ -15,7 +16,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 # local files
 from session import *
-from get_price import *
+from connect_mt5 import *
 
 # Configure logging for the program
 logging.basicConfig(filename='mt5_data_extraction.log', level=logging.DEBUG)
@@ -59,31 +60,48 @@ if __name__ == '__main__':
     """
     Main program that retrieves data from the MT5 platform and inserts it into the database.
     """
-    table_name = 'goldtest2'
-    currency_symbol = "XAUUSD"
-    timeframe_val= mt5.TIMEFRAME_D1
-    fromdate = '01-01-2002'
-    todate = '31-12-2020'
+    table_names = {
+        "M1": '1 minute',
+        "M5": '5 minute',
+        "M15": '15 minute',
+        "M30": '30 minute',
+        "H1": '1 hour',
+        "H4": '4 hour',
+        "D1": 'daily',
+        "W1":'weekly',
+        "MN1": 'monthly'
+    }
+
+    parser = argparse.ArgumentParser(description='Extract data from MT5 and insert it into database.')
+
+    parser.add_argument('-s', '--symbol', type=str, required=True, help='Currency symbol to retrieve data for.')
+    parser.add_argument('-t', '--timeframe', type=str, required=True, help='Timeframe value for data extraction, e.g. mt5.TIMEFRAME_D1.')
+    parser.add_argument('-f', '--fromdate', type=str, default='01-01-2002', help='From Date (e.g. 01-01-2002)')
+    parser.add_argument('-o', '--todate', type=str, default='31-12-2020', help='To Date (e.g. 31-12-2020)')
+
+    args = parser.parse_args()
+
+    currency_symbol = args.symbol
+    timeframe_val = args.timeframe
+    fromdate = args.fromdate
+    todate = args.todate
+
+    name = currency_symbol.lower()+'_'+table_names[timeframe_val]
+    table_name = name
 
     # Create SQLAlchemy Base object and User class using the create_table function
     Base = declarative_base()
     User = create_table(table_name, Base)
-
     # Create a SQLAlchemy session
     session = Sessions()
-
     # Get data from the MT5 platform using the get_mt5_data function
     df = get_mt5_data(currency_symbol,timeframe_val, fromdate, todate)
-
     # Log the start of data insertion into the database
     logging.info("Start inserting data into {}".format(table_name))
-
     # Insert the data into the database using the bulk_insert_mappings method
     session.bulk_insert_mappings(User,df.to_dict(orient='records'))
-
     # Commit the transaction to save the changes to the database
     session.commit()
-
     # Log the completion of data insertion and the successful completion of the program
     logging.info("Data insertion completed at {}".format(datetime.now()))
     logging.info("Program completed successfully.")

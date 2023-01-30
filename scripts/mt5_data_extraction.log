@@ -83,3 +83,152 @@ INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-20
 INFO:root:Start inserting data into goldtest2
 INFO:root:Data insertion completed at 2023-01-30 16:14:05.684429
 INFO:root:Program completed successfully.
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2022
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Program started at 2023-01-30 18:17:17.038025
+INFO:root:Program started at 2023-01-30 18:18:00.566157
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Start inserting data into goldtest2
+INFO:root:Data insertion completed at 2023-01-30 18:18:03.329476
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-01-30 18:18:24.819788
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Start inserting data into goldtest2
+INFO:root:Data insertion completed at 2023-01-30 18:18:27.580032
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-01-30 18:27:48.092797
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Start inserting data into goldtest2
+INFO:root:Data insertion completed at 2023-01-30 18:27:50.851263
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-01-30 18:29:38.729882
+INFO:root:Program started at 2023-01-30 18:30:13.066761
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Start inserting data into D1
+INFO:root:Data insertion completed at 2023-01-30 18:30:15.829586
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-01-30 18:33:19.992690
+INFO:root:Program started at 2023-01-30 18:34:07.912751
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Start inserting data into goldtest3
+INFO:root:Data insertion completed at 2023-01-30 18:34:10.679519
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-01-30 18:43:43.395916
+INFO:root:Program started at 2023-01-30 18:44:32.304612
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Start inserting data into Daily
+INFO:root:Data insertion completed at 2023-01-30 18:44:35.199491
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-01-30 21:46:59.952384
+INFO:root:Program started at 2023-01-30 21:47:22.104932
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Start inserting data into Daily
+INFO:root:Data insertion completed at 2023-01-30 21:47:27.099631
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-01-30 21:51:00.333791
+INFO:root:Program started at 2023-01-30 21:51:25.579459
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Start inserting data into daily
+INFO:root:Data insertion completed at 2023-01-30 21:51:32.076074
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-01-30 22:28:45.349124
+INFO:root:Program started at 2023-01-30 22:29:07.462392
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Start inserting data into XAUUSD_daily
+INFO:root:Data insertion completed at 2023-01-30 22:29:12.576785
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-01-30 22:32:05.865300
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Start inserting data into XAUUSD_daily
+INFO:root:Data insertion completed at 2023-01-30 22:32:10.959724
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-01-30 22:32:18.530574
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Start inserting data into XAUUSD_daily
+INFO:root:Data insertion completed at 2023-01-30 22:32:23.580857
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-01-30 22:34:36.621780
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Start inserting data into XAUUSD+daily
+INFO:root:Data insertion completed at 2023-01-30 22:34:37.898716
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-01-30 22:35:23.787921
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Start inserting data into XAUUSDdaily
+INFO:root:Data insertion completed at 2023-01-30 22:35:25.399977
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-01-30 22:45:25.651260
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Start inserting data into XAUUSD
+INFO:root:Data insertion completed at 2023-01-30 22:45:27.238022
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-01-30 22:47:36.137068
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Start inserting data into xauusd
+INFO:root:Data insertion completed at 2023-01-30 22:47:37.728257
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-01-30 22:48:20.670553
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Start inserting data into xauusddaily
+INFO:root:Data insertion completed at 2023-01-30 22:48:22.264182
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-01-30 22:49:17.683032
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Data insertion completed at 2023-01-30 22:49:19.289348
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-01-30 22:50:20.647996
+INFO:root:Program started at 2023-01-30 22:50:47.678518
+INFO:root:Program started at 2023-01-30 22:51:14.058375
+INFO:root:Program started at 2023-01-30 22:51:56.202834
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for EURUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Start inserting data into eurusd_daily
+INFO:root:Data insertion completed at 2023-01-30 22:51:58.187618
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-01-30 22:54:54.869136
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Data insertion completed at 2023-01-30 22:55:01.285832
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-01-30 23:01:20.884781
+INFO:root:Program started at 2023-01-30 23:01:55.426155
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Data insertion completed at 2023-01-30 23:02:00.368497
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-01-30 23:02:51.016769
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for EURUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Start inserting data into eurusd_daily
+INFO:root:Data insertion completed at 2023-01-30 23:02:56.081525
+INFO:root:Program completed successfully.
