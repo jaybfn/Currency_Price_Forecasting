@@ -10,7 +10,7 @@ The data can be extracted for any currency symbol and time frame (e.g. 1 minute,
 
 ## Usage
 
-The script can be executed from the command line with the following arguments:
+> The script can be executed from the command line with the following arguments:
 '''
  -s, --symbol: Currency symbol to retrieve data for. (required)
  -t, --timeframe: Timeframe value for data extraction, e.g. mt5.TIMEFRAME_D1. (required)
