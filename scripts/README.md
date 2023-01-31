@@ -11,9 +11,10 @@ The data can be extracted for any currency symbol and time frame (e.g. 1 minute,
 ## Usage
 
 The script can be executed from the command line with the following arguments:
-
-> -s, --symbol: Currency symbol to retrieve data for. (required)
-> -t, --timeframe: Timeframe value for data extraction, e.g. mt5.TIMEFRAME_D1. (required)
-> -f, --fromdate: From Date (e.g. 01-01-2002) (optional, default: 01-01-2002)
-> -o, --todate: To Date (e.g. 31-12-2020) (optional, default: 31-12-2020)
+'''
+ -s, --symbol: Currency symbol to retrieve data for. (required)
+ -t, --timeframe: Timeframe value for data extraction, e.g. mt5.TIMEFRAME_D1. (required)
+ -f, --fromdate: From Date (e.g. 01-01-2002) (optional, default: 01-01-2002)
+ -o, --todate: To Date (e.g. 31-12-2020) (optional, default: 31-12-2020)
+ '''
 
