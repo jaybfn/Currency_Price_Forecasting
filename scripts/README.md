@@ -23,7 +23,7 @@ The script can be executed from the command line with the following arguments:
 To extract daily data for the currency symbol EURUSD from 01-01-2002 to 31-12-2020, run the following command:
 
 ```ruby
-> python mt5_data_extraction.py -s EURUSD -t mt5.TIMEFRAME_D1 -f 01-01-2002 -o 31-12-2020
+python mt5_data_extraction.py -s EURUSD -t mt5.TIMEFRAME_D1 -f 01-01-2002 -o 31-12-2020
 ```
 
 ## Logging
