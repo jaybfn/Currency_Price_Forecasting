@@ -133,7 +133,7 @@ if __name__=='__main__':
 
 
     parser = argparse.ArgumentParser(description='Extract data directly from MetaTrader 5')
-    parser.add_argument('-c', '--currency_symbol', type=str, default='XAUUSD', help='Currency Symbol (e.g. XAUUSD, USDEUR)')
+    parser.add_argument('-s', '--currency_symbol', type=str, default='XAUUSD', help='Currency Symbol (e.g. XAUUSD, USDEUR)')
     parser.add_argument('-t', '--timeframe_val', type=str, default='mt5.TIMEFRAME_M1', help=f'Resolution {timeframe}')
     parser.add_argument('-f', '--fromdate', type=str, default='01-01-2002', help='From Date (e.g. 01-01-2002)')
     parser.add_argument('-o', '--todate', type=str, default='31-12-2020', help='To Date (e.g. 31-12-2020)')
