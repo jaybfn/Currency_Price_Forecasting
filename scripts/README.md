@@ -39,3 +39,4 @@ The script logs all important events in the file mt5_data_extraction.log in the 
 if you want to save the data to postgreSQL, then make sure you have other python scripts availabel in the directory : session.py & connect_mt5.py and engine_pass.py
 - The script assumes that you have a database set up and configured the connection settings in the session.py file.
 - The script creates a table for each currency symbol and time frame combination in the database, using the naming convention [currency_symbol]_[timeframe_name].
+-
