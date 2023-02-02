@@ -5,9 +5,9 @@
         the database name (pgdb) with the value 'currency'. These parameters can be used to establish a connection 
         to the PostgreSQL database with the specified information.
 '''
-postgresql = {'pguser': '******',
-                'pgpass': '*******',
+postgresql = {'pguser': '*****',
+                'pgpass': '*****',
                 'host': 'localhost',
                 'port': 5432,
-                'pgdb': 'currency'
+                'pgdb': 'currencydb'
                 }
