@@ -21,7 +21,8 @@ from sqlalchemy import create_engine
 from sqlalchemy_utils import database_exists, create_database
 from sqlalchemy.orm import sessionmaker
 # import the credential file for connecting to postgresql
-from engine_pass import postgresql as settings
+#from engine_pass import postgresql as settings
+from credential import postgresql as settings
 
 def get_engine(user, passwd, host, port, db):
     """
