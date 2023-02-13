@@ -59,7 +59,7 @@ def initialize_mt5():
         logging.error("initialize() failed, error code = %d", mt5.last_error())
         quit()
 
-def save_to_dataframe(rates, currency_symbol, timeframe_val):
+def save_to_dataframe(rates, currency_symbol):
     """
     Converts rates data from MetaTrader 5 to a pandas DataFrame
     and saves it to a csv file
@@ -75,7 +75,7 @@ def save_to_dataframe(rates, currency_symbol, timeframe_val):
     #create a directory with the specified path
     create_dir(path)
     # save to csv file format
-    rates_frame.to_csv(f'{path}/{currency_symbol}_{timeframe_val}_mt5.csv')
+    rates_frame.to_csv(f'{path}/{currency_symbol}_mt5.csv')
     logging.info(f"Data Saved to the directory:: {path}")
     return rates_frame
 
@@ -122,7 +122,7 @@ def get_mt5_data(currency_symbol = "XAUUSD", timeframe_val= 'D1', fromdate = '01
     # once extracted, shutdown mt5 session
     mt5.shutdown()
     # save data to dataframe
-    rates_frame = save_to_dataframe(rates, currency_symbol,timeframe_val)
+    rates_frame = save_to_dataframe(rates, currency_symbol)
     # logging info
     logging.info(f"Display top 10 rows of data for {currency_symbol} with a date range from {fromdate} to {todate}")
     logging.info(f"Total number of records extracted for {currency_symbol} with a date range from {fromdate} to {todate} is : {len(rates_frame)} rows")

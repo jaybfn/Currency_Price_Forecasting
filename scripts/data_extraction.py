@@ -33,12 +33,36 @@ def Sessions():
     session = get_session()
     return session
 
-def create_table(table_name, Base):
+# def create_table(table_name, Base):
+#     """
+#     Function to create table structure using SQLAlchemy ORM
+#     Args:
+#         table_name : name of the table to be created
+#         Base       : SQLAlchemy Base object
+#     Returns:
+#         User       : SQLAlchemy ORM Class for the table
+#     """
+#     class User(Base):
+#         __tablename__ = table_name
+#         id = Column(Integer, primary_key=True, autoincrement=True)
+#         date = Column(Date, nullable=False)
+#         open = Column(Float)
+#         high = Column(Float)
+#         low = Column(Float)
+#         close = Column(Float)
+#         tick_volume = Column(Float)
+#         spread = Column(Float)
+#         real_volume = Column(Float)
+    
+#     return User
+
+def create_table(table_name, Base, engine):
     """
     Function to create table structure using SQLAlchemy ORM
     Args:
         table_name : name of the table to be created
         Base       : SQLAlchemy Base object
+        engine     : SQLAlchemy engine object
     Returns:
         User       : SQLAlchemy ORM Class for the table
     """
@@ -53,7 +77,15 @@ def create_table(table_name, Base):
         tick_volume = Column(Float)
         spread = Column(Float)
         real_volume = Column(Float)
-    
+        
+    if engine.has_table(table_name):
+        # if table exists, overwrite it
+        User.__table__.drop(engine)
+        User.__table__.create(engine)
+    else:
+        # if table does not exist, create it
+        Base.metadata.create_all(engine)
+        
     return User
 
 def extract(Base,currency_symbol, timeframe_val, fromdate, todate):
