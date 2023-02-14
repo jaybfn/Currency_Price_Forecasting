@@ -288,3 +288,188 @@ INFO:root:Total number of records extracted for XAUUSD with a date range from 01
 INFO:root:Data Saved to the directory:: ../data
 INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
 INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Program started at 2023-02-13 18:08:01.153636
+INFO:root:Program started at 2023-02-13 18:08:09.820197
+INFO:root:Program started at 2023-02-13 18:08:40.651985
+INFO:root:Program started at 2023-02-13 18:15:03.822207
+INFO:root:Program started at 2023-02-13 18:15:28.398976
+INFO:root:Program started at 2023-02-13 18:15:59.627793
+INFO:root:Program started at 2023-02-13 18:16:32.527516
+INFO:root:Program started at 2023-02-13 18:22:13.924436
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Program started at 2023-02-13 18:22:58.525518
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Program started at 2023-02-13 18:36:18.357941
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Program started at 2023-02-13 22:11:59.478596
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Program started at 2023-02-13 23:55:08.885317
+INFO:root:Program started at 2023-02-13 23:55:51.496980
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into name
+INFO:root:Program started at 2023-02-13 23:56:05.329681
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into name
+INFO:root:Program started at 2023-02-13 23:58:09.356964
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Program started at 2023-02-14 00:03:29.098690
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Program started at 2023-02-14 00:09:39.712600
+INFO:root:Program started at 2023-02-14 00:09:59.086750
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Program started at 2023-02-14 00:19:40.419888
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Program started at 2023-02-14 00:36:11.344403
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Program started at 2023-02-14 00:59:16.419714
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Program started at 2023-02-14 01:03:51.038002
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Program started at 2023-02-14 01:05:23.291035
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Program started at 2023-02-14 01:06:13.072907
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Program started at 2023-02-14 01:13:54.976785
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Program started at 2023-02-14 01:14:10.902031
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Program started at 2023-02-14 01:16:00.132732
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Program started at 2023-02-14 01:16:27.753475
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Program started at 2023-02-14 01:26:27.950104
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Data insertion completed at 2023-02-14 01:26:28.840700
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-02-14 01:30:58.275175
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Program started at 2023-02-14 01:33:14.308764
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Program started at 2023-02-14 01:35:43.477808
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Program started at 2023-02-14 01:40:06.143310
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Program started at 2023-02-14 01:41:30.461173
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Program started at 2023-02-14 01:42:37.866861
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Data insertion completed at 2023-02-14 01:42:38.816601
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-02-14 01:43:21.116440
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Data insertion completed at 2023-02-14 01:43:22.054814
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-02-14 01:44:40.731240
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 11451 rows
+INFO:root:Start inserting data into xauusd_4 hour
+INFO:root:Data insertion completed at 2023-02-14 01:44:41.928785
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-02-14 01:47:17.736499
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 11451 rows
+INFO:root:Start inserting data into xauusd_4hour
+INFO:root:Data insertion completed at 2023-02-14 01:47:19.796163
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-02-14 01:48:07.668672
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Data insertion completed at 2023-02-14 01:48:08.634839
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-02-14 01:48:15.898232
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Data insertion completed at 2023-02-14 01:48:16.839537
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-02-14 01:49:16.475600
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Data insertion completed at 2023-02-14 01:49:17.424801
+INFO:root:Program completed successfully.

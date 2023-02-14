@@ -33,30 +33,7 @@ def Sessions():
     session = get_session()
     return session
 
-# def create_table(table_name, Base):
-#     """
-#     Function to create table structure using SQLAlchemy ORM
-#     Args:
-#         table_name : name of the table to be created
-#         Base       : SQLAlchemy Base object
-#     Returns:
-#         User       : SQLAlchemy ORM Class for the table
-#     """
-#     class User(Base):
-#         __tablename__ = table_name
-#         id = Column(Integer, primary_key=True, autoincrement=True)
-#         date = Column(Date, nullable=False)
-#         open = Column(Float)
-#         high = Column(Float)
-#         low = Column(Float)
-#         close = Column(Float)
-#         tick_volume = Column(Float)
-#         spread = Column(Float)
-#         real_volume = Column(Float)
-    
-#     return User
-
-def create_table(table_name, Base, engine):
+def create_table(table_name, Base):
     """
     Function to create table structure using SQLAlchemy ORM
     Args:
@@ -66,6 +43,7 @@ def create_table(table_name, Base, engine):
     Returns:
         User       : SQLAlchemy ORM Class for the table
     """
+    engine = get_engine_from_settings()
     class User(Base):
         __tablename__ = table_name
         id = Column(Integer, primary_key=True, autoincrement=True)
@@ -92,8 +70,9 @@ def extract(Base,currency_symbol, timeframe_val, fromdate, todate):
     
     name = currency_symbol.lower()+'_'+table_names[timeframe_val]
     table_name = name
-
+    
     # Create SQLAlchemy Base object and User class using the create_table function
+    #Base = declarative_base()
     User = create_table(table_name, Base)
     # Create a SQLAlchemy session
     session = Sessions()
@@ -114,12 +93,12 @@ if __name__ == '__main__':
     Main program that retrieves data from the MT5 platform and inserts it into the database.
     """
     table_names = {
-        "M1": '1 minute',
-        "M5": '5 minute',
-        "M15": '15 minute',
-        "M30": '30 minute',
-        "H1": '1 hour',
-        "H4": '4 hour',
+        "M1": '1minute',
+        "M5": '5minute',
+        "M15": '15minute',
+        "M30": '30minute',
+        "H1": '1hour',
+        "H4": '4hour',
         "D1": 'daily',
         "W1":'weekly',
         "MN1": 'monthly'
