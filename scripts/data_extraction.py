@@ -70,7 +70,6 @@ def extract(Base,currency_symbol, timeframe_val, fromdate, todate):
     
     name = currency_symbol.lower()+'_'+table_names[timeframe_val]
     table_name = name
-    
     # Create SQLAlchemy Base object and User class using the create_table function
     #Base = declarative_base()
     User = create_table(table_name, Base)

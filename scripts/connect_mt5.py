@@ -14,7 +14,7 @@ logging.basicConfig(filename='mt5_data_extraction.log', level=logging.DEBUG)
 pd.set_option('display.max_columns', 500) # number of columns to be displayed
 pd.set_option('display.width', 1500)      # max table width to display
 
-# mt5 timeframes resolution for data extraction
+# Mapping for the timeframes used in MetaTrader 5 to their respective values
 timeframe_mapping = {
 
         "M1": mt5.TIMEFRAME_M1,
@@ -29,7 +29,7 @@ timeframe_mapping = {
 
     }
 
-# time frame explanation used in argpars argument
+# Descriptions of the timeframes for use in argparse
 timeframe = {
         "M1": '1 minute',
         "M5": '5 minute',
@@ -49,7 +49,7 @@ def create_dir(path):
     isExist = os.path.exists(path)
     if not isExist:
         os.makedirs(path, exist_ok = False)
-        logging.info("New directory is created")
+        logging.info(f"New directory created: {path}")
 
 def initialize_mt5():
     """
