@@ -14,7 +14,16 @@ The script can be executed from the command line with the following arguments:
 
 ```ruby
  -s, --symbol: Currency symbol to retrieve data for. (required)
- -t, --timeframe: Timeframe value for data extraction, e.g. mt5.TIMEFRAME_D1. (required)
+ -t, --timeframe: Timeframe value for data extraction, 
+ e.g. timeframe_mapping = {"M1": mt5.TIMEFRAME_M1, 
+        "M5": mt5.TIMEFRAME_M5,
+        "M15": mt5.TIMEFRAME_M5,
+        "M30": mt5.TIMEFRAME_M30,
+        "H1": mt5.TIMEFRAME_H1,
+        "H4": mt5.TIMEFRAME_H4,
+        "D1": mt5.TIMEFRAME_D1,
+        "W1": mt5.TIMEFRAME_W1,
+        "MN1": mt5.TIMEFRAME_MN1}. (required)
  -f, --fromdate: From Date (e.g. 01-01-2002) (optional, default: 01-01-2002)
  -o, --todate: To Date (e.g. 31-12-2020) (optional, default: 31-12-2020)
 ```
