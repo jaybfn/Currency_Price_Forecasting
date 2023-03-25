@@ -32,12 +32,12 @@ The script can be executed from the command line with the following arguments:
 To extract daily data for the currency symbol EURUSD from 01-01-2002 to 31-12-2020, and store it on a local postgreSQL then run the following command:
 
 ```ruby
-python data_extraction.py -s EURUSD -t mt5.TIMEFRAME_D1 -f 01-01-2002 -o 31-12-2020
+python data_extraction.py -s EURUSD -t D1 -f 01-01-2002 -o 31-12-2020
 ```
 To extract daily data for the currency symbol EURUSD from 01-01-2002 to 31-12-2020, and store it on a local csv file then run the following command:
 ##### Extract and store it to local directory (.csv)
 ```ruby
-python connect_mt5.py -s EURUSD -t mt5.TIMEFRAME_D1 -f 01-01-2002 -o 31-12-2020
+python connect_mt5.py -s EURUSD -t D1 -f 01-01-2002 -o 31-12-2020
 ```
 
 ## Logging
