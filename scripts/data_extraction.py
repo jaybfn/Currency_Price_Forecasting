@@ -13,7 +13,7 @@ import logging
 import MetaTrader5 as mt5
 from sqlalchemy import Column, Integer,Date, Float
 from sqlalchemy.ext.declarative import declarative_base
-
+from sqlalchemy import inspect
 # local files
 from session import *
 from connect_mt5 import *
@@ -55,8 +55,10 @@ def create_table(table_name, Base):
         tick_volume = Column(Float)
         spread = Column(Float)
         real_volume = Column(Float)
-        
-    if engine.has_table(table_name):
+    
+    inspector = inspect(engine)
+    #if engine.has_table(table_name):
+    if inspector.has_table(table_name):
         # if table exists, overwrite it
         User.__table__.drop(engine)
         User.__table__.create(engine)
