@@ -93,7 +93,7 @@ if __name__ == '__main__':
     """
     Main program that retrieves data from the MT5 platform and inserts it into the database.
     """
-    table_names = {
+    table_names ={
         "M1": '1minute',
         "M5": '5minute',
         "M15": '15minute',
