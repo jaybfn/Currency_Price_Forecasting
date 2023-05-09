@@ -13,3 +13,7 @@ postgresql = {'pguser': '******',
                 'port': 5432,
                 'pgdb': 'currencydb'
                 }
+
+tradingview = {'username':'*******************',
+                'password':'*****************'}
+
