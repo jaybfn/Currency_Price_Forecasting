@@ -4,6 +4,8 @@
         the value '******', the host (host) with the value 'localhost', the port (port) with the value 5432, and 
         the database name (pgdb) with the value 'currency'. These parameters can be used to establish a connection 
         to the PostgreSQL database with the specified information.
+
+        to enter the database: psql <dbname> <username> 
 '''
 postgresql = {'pguser': '******',
                 'pgpass': '*****',
