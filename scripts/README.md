@@ -37,7 +37,7 @@ python data_extraction.py -s EURUSD -t D1 -f 01-01-2002 -o 31-12-2020
 To access the data from postgreSQL, run the following command:
 
 ```ruby
-psql -U {USERNAME}
+psql -U {USERNAME} -d {database_name}
 ```
 
 To extract daily data for the currency symbol EURUSD from 01-01-2002 to 31-12-2020, and store it on a local csv file then run the following command:
