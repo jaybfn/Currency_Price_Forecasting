@@ -572,3 +572,188 @@ INFO:root:Total number of records extracted for XAUUSD with a date range from 01
 INFO:root:Start inserting data into xauusd_daily
 INFO:root:Data insertion completed at 2023-05-30 23:46:21.352491
 INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-05-31 10:46:15.388010
+INFO:root:Program started at 2023-05-31 10:46:30.141358
+INFO:root:Program started at 2023-05-31 10:48:07.708553
+INFO:root:Program started at 2023-05-31 10:51:30.804067
+INFO:root:Program started at 2023-05-31 10:51:57.922004
+INFO:root:Program started at 2023-05-31 10:52:52.437940
+INFO:root:Program started at 2023-05-31 10:53:40.868252
+INFO:root:Program started at 2023-05-31 10:54:44.877392
+INFO:root:Program started at 2023-05-31 10:56:20.572414
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.tradingview.com:443
+DEBUG:urllib3.connectionpool:https://www.tradingview.com:443 "POST /accounts/signin/ HTTP/1.1" 200 None
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for OANDA:XAUUSD...
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for TVC:DXY...
+DEBUG:tvDatafeed.main:no volume data
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for TVC:USOIL...
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for ECONOMICS:USINTR...
+DEBUG:tvDatafeed.main:no volume data
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for OANDA:SPX500USD...
+INFO:root:Program started at 2023-05-31 10:57:58.815332
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.tradingview.com:443
+DEBUG:urllib3.connectionpool:https://www.tradingview.com:443 "POST /accounts/signin/ HTTP/1.1" 200 None
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for OANDA:XAUUSD...
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for TVC:DXY...
+DEBUG:tvDatafeed.main:no volume data
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for TVC:USOIL...
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for ECONOMICS:USINTR...
+DEBUG:tvDatafeed.main:no volume data
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for OANDA:SPX500USD...
+INFO:root:Program started at 2023-05-31 10:59:12.443264
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.tradingview.com:443
+DEBUG:urllib3.connectionpool:https://www.tradingview.com:443 "POST /accounts/signin/ HTTP/1.1" 200 None
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for OANDA:XAUUSD...
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for TVC:DXY...
+DEBUG:tvDatafeed.main:no volume data
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for TVC:USOIL...
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for ECONOMICS:USINTR...
+DEBUG:tvDatafeed.main:no volume data
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for OANDA:SPX500USD...
+INFO:root:Start inserting data into xauusd_data
+INFO:root:Data insertion completed at 2023-05-31 10:59:17.778544
+INFO:root:Program completed successfully.
+INFO:root:Start inserting data into dxy_data
+INFO:root:Data insertion completed at 2023-05-31 10:59:18.381971
+INFO:root:Program completed successfully.
+INFO:root:Start inserting data into usoil_data
+INFO:root:Data insertion completed at 2023-05-31 10:59:19.105235
+INFO:root:Program completed successfully.
+INFO:root:Start inserting data into usintr_data
+INFO:root:Data insertion completed at 2023-05-31 10:59:19.395421
+INFO:root:Program completed successfully.
+INFO:root:Start inserting data into spx500usd_data
+INFO:root:Data insertion completed at 2023-05-31 10:59:19.864793
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-05-31 11:01:51.426996
+INFO:root:Program started at 2023-05-31 11:04:44.011921
+INFO:root:Program started at 2023-05-31 11:11:26.326779
+INFO:root:Program started at 2023-05-31 11:12:17.750291
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.tradingview.com:443
+DEBUG:urllib3.connectionpool:https://www.tradingview.com:443 "POST /accounts/signin/ HTTP/1.1" 200 None
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for OANDA:XAUUSD...
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for TVC:DXY...
+DEBUG:tvDatafeed.main:no volume data
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for TVC:USOIL...
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for ECONOMICS:USINTR...
+DEBUG:tvDatafeed.main:no volume data
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for OANDA:SPX500USD...
+INFO:root:Start inserting data into xauusd_data
+INFO:root:Data insertion completed at 2023-05-31 11:12:23.602122
+INFO:root:Program completed successfully.
+INFO:root:Start inserting data into dxy_data
+INFO:root:Data insertion completed at 2023-05-31 11:12:24.246399
+INFO:root:Program completed successfully.
+INFO:root:Start inserting data into usoil_data
+INFO:root:Data insertion completed at 2023-05-31 11:12:25.123571
+INFO:root:Program completed successfully.
+INFO:root:Start inserting data into usintr_data
+INFO:root:Data insertion completed at 2023-05-31 11:12:25.522171
+INFO:root:Program completed successfully.
+INFO:root:Start inserting data into spx500usd_data
+INFO:root:Data insertion completed at 2023-05-31 11:12:26.103553
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-05-31 11:14:56.076092
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.tradingview.com:443
+DEBUG:urllib3.connectionpool:https://www.tradingview.com:443 "POST /accounts/signin/ HTTP/1.1" 200 None
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for OANDA:XAUUSD...
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for TVC:DXY...
+DEBUG:tvDatafeed.main:no volume data
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for TVC:USOIL...
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for ECONOMICS:USINTR...
+DEBUG:tvDatafeed.main:no volume data
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for OANDA:SPX500USD...
+INFO:root:Program started at 2023-05-31 11:16:20.014333
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.tradingview.com:443
+DEBUG:urllib3.connectionpool:https://www.tradingview.com:443 "POST /accounts/signin/ HTTP/1.1" 200 None
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for OANDA:XAUUSD...
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for TVC:DXY...
+DEBUG:tvDatafeed.main:no volume data
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for TVC:USOIL...
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for ECONOMICS:USINTR...
+DEBUG:tvDatafeed.main:no volume data
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for OANDA:SPX500USD...
+INFO:root:Start inserting data into xauusd_data
+INFO:root:Data insertion completed at 2023-05-31 11:16:25.631025
+INFO:root:Program completed successfully.
+INFO:root:Start inserting data into dxy_data
+INFO:root:Data insertion completed at 2023-05-31 11:16:26.331238
+INFO:root:Program completed successfully.
+INFO:root:Start inserting data into usoil_data
+INFO:root:Data insertion completed at 2023-05-31 11:16:26.961595
+INFO:root:Program completed successfully.
+INFO:root:Start inserting data into usintr_data
+INFO:root:Data insertion completed at 2023-05-31 11:16:27.252233
+INFO:root:Program completed successfully.
+INFO:root:Start inserting data into spx500usd_data
+INFO:root:Data insertion completed at 2023-05-31 11:16:27.718641
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-09-04 19:11:51.579777
+INFO:root:Data Saved to the directory:: ../data
+INFO:root:Display top 10 rows of data for XAUUSD with a date range from 01-01-2002 to 31-12-2020
+INFO:root:Total number of records extracted for XAUUSD with a date range from 01-01-2002 to 31-12-2020 is : 5068 rows
+INFO:root:Start inserting data into xauusd_daily
+INFO:root:Data insertion completed at 2023-09-04 19:11:57.100013
+INFO:root:Program completed successfully.
+INFO:root:Program started at 2023-09-15 17:45:10.129902
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): www.tradingview.com:443
+DEBUG:urllib3.connectionpool:https://www.tradingview.com:443 "POST /accounts/signin/ HTTP/1.1" 200 108
+ERROR:tvDatafeed.main:error while signin
+WARNING:tvDatafeed.main:you are using nologin method, data you access may be limited
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for OANDA:XAUUSD...
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for TVC:DXY...
+DEBUG:tvDatafeed.main:no volume data
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for TVC:USOIL...
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for ECONOMICS:USINTR...
+DEBUG:tvDatafeed.main:no volume data
+DEBUG:root:creating websocket connection
+DEBUG:tvDatafeed.main:getting data for OANDA:SPX500USD...
+INFO:root:Start inserting data into xauusd_data
+INFO:root:Data insertion completed at 2023-09-15 17:45:14.976274
+INFO:root:Program completed successfully.
+INFO:root:Start inserting data into dxy_data
+INFO:root:Data insertion completed at 2023-09-15 17:45:15.595601
+INFO:root:Program completed successfully.
+INFO:root:Start inserting data into usoil_data
+INFO:root:Data insertion completed at 2023-09-15 17:45:16.228734
+INFO:root:Program completed successfully.
+INFO:root:Start inserting data into usintr_data
+INFO:root:Data insertion completed at 2023-09-15 17:45:16.523259
+INFO:root:Program completed successfully.
+INFO:root:Start inserting data into spx500usd_data
+INFO:root:Data insertion completed at 2023-09-15 17:45:17.122574
+INFO:root:Program completed successfully.
