@@ -69,26 +69,46 @@ def create_table(table_name, Base):
         
     return User
 
+# def get_historical_data(tv, symbol_exchange_dict, interval, n_bars):
+#     result = {}
+#     for symbol, exchange in symbol_exchange_dict.items():
+#         if not symbol == 'USCCPI':
+#             data = tv.get_hist(symbol=symbol, exchange=exchange, interval=interval, n_bars=n_bars)
+#             data.reset_index(inplace=True)
+#             result[symbol] = data
+#         else:
+#             data = tv.get_hist(symbol=symbol, exchange=exchange,n_bars=500)
+#             data.reset_index(inplace=True)
+#             result[symbol] = data
+
+#     return result
+
 def get_historical_data(tv, symbol_exchange_dict, interval, n_bars):
     result = {}
     for symbol, exchange in symbol_exchange_dict.items():
-        if not symbol == 'USCCPI':
+        if symbol != 'USCCPI':
             data = tv.get_hist(symbol=symbol, exchange=exchange, interval=interval, n_bars=n_bars)
-            data.reset_index(inplace=True)
-            result[symbol] = data
+            if data is not None:
+                data.reset_index(inplace=True)
+                result[symbol] = data
+            else:
+                logging.info(f"No data returned for {symbol} on {exchange} with interval {interval} and n_bars {n_bars}")
         else:
-            data = tv.get_hist(symbol=symbol, exchange=exchange,n_bars=500)
-            data.reset_index(inplace=True)
-            result[symbol] = data
+            data = tv.get_hist(symbol=symbol, exchange=exchange, n_bars=500)
+            if data is not None:
+                data.reset_index(inplace=True)
+                result[symbol] = data
+            else:
+                logging.info(f"No data returned for {symbol} on {exchange} with n_bars 500")
 
     return result
+
 
 def extract_load_data_to_postgres_db(Base,currency_symbol,historical_data):
 
     name = currency_symbol.lower()+'_'+'data'
     table_name = name
     # Create SQLAlchemy Base object and User class using the create_table function
-    #Base = declarative_base()
     User = create_table(table_name, Base)
     # Create a SQLAlchemy session
     session = Sessions()
@@ -96,7 +116,6 @@ def extract_load_data_to_postgres_db(Base,currency_symbol,historical_data):
     # Log the start of data insertion into the database
     logging.info("Start inserting data into {}".format(table_name))
     # Insert the data into the database using the bulk_insert_mappings method
-    #session.bulk_insert_mappings(User,historical_data.to_dict(orient='records'))
     session.bulk_insert_mappings(User,historical_data.to_dict(orient='records'))
     # Commit the transaction to save the changes to the database
     session.commit()
@@ -104,39 +123,12 @@ def extract_load_data_to_postgres_db(Base,currency_symbol,historical_data):
     logging.info("Data insertion completed at {}".format(datetime.now()))
     logging.info("Program completed successfully.")
 
-
-
-# def get_latest_date(session, table_name):
-#     # Define your SQL query to select the latest date from the table
-#     sql_query = f"SELECT max(datetime) FROM {table_name} LIMIT 5"
-#     #max(datetime)
-#     # Execute the query and fetch the result
-#     result = session.connection().execute(sql_query)
-    
-#     # Fetch the first row (which contains the latest date)
-#     latest_date = result.fetchone()[0]
-
-#     #Check if the latest_date is not None, and then format and print it
-#     if latest_date:
-#         formatted_date = latest_date.strftime('%Y-%m-%d')
-#         return formatted_date
-#     else:
-#         return ("No data found in the table.")
-    
-
 def get_latest_date(session, table_name):
     # Directly inserting the table name into the query. Ensure table_name is safe!
     sql_query = f"SELECT max(datetime) FROM {table_name} LIMIT 5"
-    
     # Using text() for any user-provided values in the rest of the query
     result = session.execute(text(sql_query)).fetchone()
-    
     return result[0] if result else None
-# Function to check if a table exists in the database
-# def table_exists(session, table_name):
-#     return session.connection().execute(
-#         f"SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = '{table_name}')"
-#     ).scalar()
 
 def table_exists(session, table_name):
     sql = text("SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = :table_name)")
@@ -159,8 +151,6 @@ def load_data_to_postgres_db(Base,currency_symbol,historical_data, session):
     logging.info("Data insertion completed at {}".format(datetime.now()))
     logging.info("Program completed successfully.")
 
-
-
 def process_historical_data(tv, symbol_exchange_dict, settings):
     """
     Process historical data for multiple symbols and store it in a PostgreSQL database.
@@ -173,7 +163,6 @@ def process_historical_data(tv, symbol_exchange_dict, settings):
     Returns:
         None
     """
-
     session = Sessions()
     # initializing the dictionary
     historical_data = {}
