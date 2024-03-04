@@ -10,6 +10,7 @@ import pandas as pd
 from datetime import datetime
 from sqlalchemy import inspect
 from sqlalchemy import insert
+from sqlalchemy import text
 # local files
 from session import *
 from datetime import datetime, date 
@@ -105,30 +106,42 @@ def extract_load_data_to_postgres_db(Base,currency_symbol,historical_data):
 
 
 
+# def get_latest_date(session, table_name):
+#     # Define your SQL query to select the latest date from the table
+#     sql_query = f"SELECT max(datetime) FROM {table_name} LIMIT 5"
+#     #max(datetime)
+#     # Execute the query and fetch the result
+#     result = session.connection().execute(sql_query)
+    
+#     # Fetch the first row (which contains the latest date)
+#     latest_date = result.fetchone()[0]
+
+#     #Check if the latest_date is not None, and then format and print it
+#     if latest_date:
+#         formatted_date = latest_date.strftime('%Y-%m-%d')
+#         return formatted_date
+#     else:
+#         return ("No data found in the table.")
+    
+
 def get_latest_date(session, table_name):
-    # Define your SQL query to select the latest date from the table
+    # Directly inserting the table name into the query. Ensure table_name is safe!
     sql_query = f"SELECT max(datetime) FROM {table_name} LIMIT 5"
-    #max(datetime)
-    # Execute the query and fetch the result
-    result = session.connection().execute(sql_query)
     
-    # Fetch the first row (which contains the latest date)
-    latest_date = result.fetchone()[0]
-
-    #Check if the latest_date is not None, and then format and print it
-    if latest_date:
-        formatted_date = latest_date.strftime('%Y-%m-%d')
-        return formatted_date
-    else:
-        return ("No data found in the table.")
+    # Using text() for any user-provided values in the rest of the query
+    result = session.execute(text(sql_query)).fetchone()
     
-
+    return result[0] if result else None
 # Function to check if a table exists in the database
-def table_exists(session, table_name):
-    return session.connection().execute(
-        f"SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = '{table_name}')"
-    ).scalar()
+# def table_exists(session, table_name):
+#     return session.connection().execute(
+#         f"SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = '{table_name}')"
+#     ).scalar()
 
+def table_exists(session, table_name):
+    sql = text("SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = :table_name)")
+    result = session.execute(sql, {'table_name': table_name}).scalar()
+    return result
 
 def load_data_to_postgres_db(Base,currency_symbol,historical_data, session):
     

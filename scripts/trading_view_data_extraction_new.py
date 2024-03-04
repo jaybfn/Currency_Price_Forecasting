@@ -1,4 +1,5 @@
 # Import necessary libraries
+# pip install --upgrade --no-cache-dir git+https://github.com/rongardF/tvdatafeed.git
 from tvDatafeed import TvDatafeed, Interval
 from sqlalchemy import create_engine, Column, Integer, Date, Float, func
 from sqlalchemy.ext.declarative import declarative_base
