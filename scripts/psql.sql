@@ -5,3 +5,5 @@ WHERE datetime IN (
   ORDER BY datetime DESC
   LIMIT 10
 );
+
+SELECT * FROM usoil_data ORDER BY datetime DESC LIMIT 10;
