@@ -69,18 +69,37 @@ def create_table(table_name, Base):
         
     return User
 
+# def get_historical_data(tv, symbol_exchange_dict, interval, n_bars):
+#     result = {}
+#     for symbol, exchange in symbol_exchange_dict.items():
+#         if not symbol == 'USCCPI':
+#             data = tv.get_hist(symbol=symbol, exchange=exchange, interval=interval, n_bars=n_bars)
+#             data.reset_index(inplace=True)
+#             result[symbol] = data
+#         else:
+#             data = tv.get_hist(symbol=symbol, exchange=exchange,n_bars=500)
+#             data.reset_index(inplace=True)
+#             result[symbol] = data
+
+#     return result
+
 def get_historical_data(tv, symbol_exchange_dict, interval, n_bars):
     result = {}
     for symbol, exchange in symbol_exchange_dict.items():
-        if not symbol == 'USCCPI':
-            data = tv.get_hist(symbol=symbol, exchange=exchange, interval=interval, n_bars=n_bars)
+        # Adjust the n_bars based on the symbol
+        effective_n_bars = n_bars if symbol != 'USCCPI' else 500
+        data = tv.get_hist(symbol=symbol, exchange=exchange, interval=interval, n_bars=effective_n_bars)
+        
+        # Check if data is not None before proceeding
+        if data is not None:
             data.reset_index(inplace=True)
             result[symbol] = data
         else:
-            data = tv.get_hist(symbol=symbol, exchange=exchange,n_bars=500)
-            data.reset_index(inplace=True)
-            result[symbol] = data
-
+            # Notify or handle the absence of data explicitly
+            logging.info(f"No data returned for {symbol} on {exchange}")
+            # For example, set the result to None or an empty DataFrame
+            result[symbol] = None  # or pd.DataFrame(), depending on how you want to handle this scenario
+    
     return result
 
 def extract_load_data_to_postgres_db(Base,currency_symbol,historical_data):
@@ -104,26 +123,6 @@ def extract_load_data_to_postgres_db(Base,currency_symbol,historical_data):
     logging.info("Data insertion completed at {}".format(datetime.now()))
     logging.info("Program completed successfully.")
 
-
-
-# def get_latest_date(session, table_name):
-#     # Define your SQL query to select the latest date from the table
-#     sql_query = f"SELECT max(datetime) FROM {table_name} LIMIT 5"
-#     #max(datetime)
-#     # Execute the query and fetch the result
-#     result = session.connection().execute(sql_query)
-    
-#     # Fetch the first row (which contains the latest date)
-#     latest_date = result.fetchone()[0]
-
-#     #Check if the latest_date is not None, and then format and print it
-#     if latest_date:
-#         formatted_date = latest_date.strftime('%Y-%m-%d')
-#         return formatted_date
-#     else:
-#         return ("No data found in the table.")
-    
-
 def get_latest_date(session, table_name):
     # Directly inserting the table name into the query. Ensure table_name is safe!
     sql_query = f"SELECT max(datetime) FROM {table_name} LIMIT 5"
@@ -132,11 +131,6 @@ def get_latest_date(session, table_name):
     result = session.execute(text(sql_query)).fetchone()
     
     return result[0] if result else None
-# Function to check if a table exists in the database
-# def table_exists(session, table_name):
-#     return session.connection().execute(
-#         f"SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = '{table_name}')"
-#     ).scalar()
 
 def table_exists(session, table_name):
     sql = text("SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = :table_name)")
@@ -207,7 +201,7 @@ def process_historical_data(tv, symbol_exchange_dict, settings):
             data = symbol_data.loc[symbol_data['datetime'].dt.date > latest_date.date()]
             if 'index' in data.columns:
                 data = data.drop(columns=['index'])
-            data.loc[:, 'datetime'] = data['datetime'].dt.date
+            data.loc[:, 'datetime'] = pd.to_datetime(data['datetime'].dt.date)
             data = data.drop(columns=['symbol'])
             # updating the table with new data!
             data.to_sql(table_name, con= get_engine(settings['pguser'], 
