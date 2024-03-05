@@ -69,19 +69,6 @@ def create_table(table_name, Base):
         
     return User
 
-# def get_historical_data(tv, symbol_exchange_dict, interval, n_bars):
-#     result = {}
-#     for symbol, exchange in symbol_exchange_dict.items():
-#         if not symbol == 'USCCPI':
-#             data = tv.get_hist(symbol=symbol, exchange=exchange, interval=interval, n_bars=n_bars)
-#             data.reset_index(inplace=True)
-#             result[symbol] = data
-#         else:
-#             data = tv.get_hist(symbol=symbol, exchange=exchange,n_bars=500)
-#             data.reset_index(inplace=True)
-#             result[symbol] = data
-
-#     return result
 
 def get_historical_data(tv, symbol_exchange_dict, interval, n_bars):
     result = {}
