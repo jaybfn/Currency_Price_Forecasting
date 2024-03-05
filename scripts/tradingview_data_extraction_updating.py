@@ -86,21 +86,20 @@ def create_table(table_name, Base):
 def get_historical_data(tv, symbol_exchange_dict, interval, n_bars):
     result = {}
     for symbol, exchange in symbol_exchange_dict.items():
-        if symbol != 'USCCPI':
-            data = tv.get_hist(symbol=symbol, exchange=exchange, interval=interval, n_bars=n_bars)
-            if data is not None:
-                data.reset_index(inplace=True)
-                result[symbol] = data
-            else:
-                logging.info(f"No data returned for {symbol} on {exchange} with interval {interval} and n_bars {n_bars}")
+        # Adjust the n_bars based on the symbol
+        effective_n_bars = n_bars if symbol != 'USCCPI' else 500
+        data = tv.get_hist(symbol=symbol, exchange=exchange, interval=interval, n_bars=effective_n_bars)
+        
+        # Check if data is not None before proceeding
+        if data is not None:
+            data.reset_index(inplace=True)
+            result[symbol] = data
         else:
-            data = tv.get_hist(symbol=symbol, exchange=exchange, n_bars=500)
-            if data is not None:
-                data.reset_index(inplace=True)
-                result[symbol] = data
-            else:
-                logging.info(f"No data returned for {symbol} on {exchange} with n_bars 500")
-
+            # Notify or handle the absence of data explicitly
+            logging.info(f"No data returned for {symbol} on {exchange}")
+            # For example, set the result to None or an empty DataFrame
+            result[symbol] = None  # or pd.DataFrame(), depending on how you want to handle this scenario
+    
     return result
 
 
@@ -196,7 +195,7 @@ def process_historical_data(tv, symbol_exchange_dict, settings):
             data = symbol_data.loc[symbol_data['datetime'].dt.date > latest_date.date()]
             if 'index' in data.columns:
                 data = data.drop(columns=['index'])
-            data.loc[:, 'datetime'] = data['datetime'].dt.date
+            data.loc[:, 'datetime'] = pd.to_datetime(data['datetime'].dt.date)
             data = data.drop(columns=['symbol'])
             # updating the table with new data!
             data.to_sql(table_name, con= get_engine(settings['pguser'], 
