@@ -230,22 +230,6 @@ def table_exists(session: Session, table_name: str) -> bool:
     return result
 
 
-# def load_data_to_postgres_db(Base,currency_symbol,historical_data, session):
-    
-#     name = currency_symbol.lower()+'_'+'data'
-#     table_name = name
-#     # Create SQLAlchemy Base object and User class using the create_table function
-#     User = create_table(table_name, Base)
-#     # Log the start of data insertion into the database
-#     logging.info("Start inserting data into {}".format(table_name))
-#     # Insert the data into the database using the bulk_insert_mappings method
-#     session.bulk_insert_mappings(User,historical_data.to_dict(orient='records'))
-#     # Commit the transaction to save the changes to the database
-#     session.commit()
-#     # Log the completion of data insertion and the successful completion of the program
-#     logging.info("Data insertion completed at {}".format(datetime.now()))
-#     logging.info("Program completed successfully.")
-
 def load_data_to_postgres_db(Base: declarative_base, currency_symbol: str, historical_data: pd.DataFrame, session: Session) -> None:
     """
     Loads historical market data into a PostgreSQL database for a specific currency symbol. 
