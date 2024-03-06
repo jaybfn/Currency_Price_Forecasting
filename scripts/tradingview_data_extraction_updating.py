@@ -123,24 +123,68 @@ def get_historical_data(tv: Any, symbol_exchange_dict: Dict[str, str], interval:
     return result
 
 
-def extract_load_data_to_postgres_db(Base,currency_symbol,historical_data):
+# def extract_load_data_to_postgres_db(Base,currency_symbol,historical_data):
 
-    name = currency_symbol.lower()+'_'+'data'
+#     name = currency_symbol.lower()+'_'+'data'
+#     table_name = name
+#     # Create SQLAlchemy Base object and User class using the create_table function
+#     User = create_table(table_name, Base)
+#     # Create a SQLAlchemy session
+#     session = Sessions()
+
+#     # Log the start of data insertion into the database
+#     logging.info("Start inserting data into {}".format(table_name))
+#     # Insert the data into the database using the bulk_insert_mappings method
+#     session.bulk_insert_mappings(User,historical_data.to_dict(orient='records'))
+#     # Commit the transaction to save the changes to the database
+#     session.commit()
+#     # Log the completion of data insertion and the successful completion of the program
+#     logging.info("Data insertion completed at {}".format(datetime.now()))
+#     logging.info("Program completed successfully.")
+
+def extract_load_data_to_postgres_db(Base: declarative_base, currency_symbol: str, historical_data: pd.DataFrame) -> None:
+    """
+    Extracts historical market data and loads it into a PostgreSQL database table. The table name is derived from
+    the currency symbol, and the data is inserted using SQLAlchemy's bulk insert functionality.
+
+    Parameters:
+    - Base (declarative_base): SQLAlchemy declarative base object used for defining the table schema.
+    - currency_symbol (str): The currency symbol that identifies the data set and is used to name the database table.
+    - historical_data (pd.DataFrame): A DataFrame containing the historical market data to be inserted into the database.
+
+    Returns:
+    None: This function does not return a value. It logs the process of data insertion.
+
+    The function dynamically creates a new table based on the currency symbol, inserts the data from the DataFrame
+    into this table, commits the transaction, and logs the start and completion of this process.
+    """
+    # Derive the table name from the currency symbol
+    name = currency_symbol.lower() + '_data'
     table_name = name
-    # Create SQLAlchemy Base object and User class using the create_table function
+
+    # Dynamically create a table class using the provided Base and table name
     User = create_table(table_name, Base)
-    # Create a SQLAlchemy session
+
+    # Create a new SQLAlchemy session for database operations
     session = Sessions()
 
-    # Log the start of data insertion into the database
-    logging.info("Start inserting data into {}".format(table_name))
-    # Insert the data into the database using the bulk_insert_mappings method
-    session.bulk_insert_mappings(User,historical_data.to_dict(orient='records'))
-    # Commit the transaction to save the changes to the database
+    # Log the start of data insertion
+    logging.info(f"Start inserting data into {table_name}")
+
+    # Convert DataFrame to a list of dictionaries for bulk insert
+    data_to_insert = historical_data.to_dict(orient='records')
+    
+    # Bulk insert the data into the created table
+    session.bulk_insert_mappings(User, data_to_insert)
+
+    # Commit the changes to the database
     session.commit()
-    # Log the completion of data insertion and the successful completion of the program
-    logging.info("Data insertion completed at {}".format(datetime.now()))
+
+    # Log the completion of data insertion
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    logging.info(f"Data insertion completed at {current_time}")
     logging.info("Program completed successfully.")
+
 
 def get_latest_date(session, table_name):
     # Directly inserting the table name into the query. Ensure table_name is safe!
