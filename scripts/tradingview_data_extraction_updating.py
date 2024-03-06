@@ -187,7 +187,7 @@ def get_latest_date(session: Session, table_name: str) -> Any:
         because the datatype of the datetime column is not explicitly known here. Returns None
         if the query result is empty.
 
-    Note:
+    Notes:
     The function uses the SQLAlchemy `text` function for executing a raw SQL query, ensuring that
     the table_name parameter is interpolated safely is the responsibility of the caller.
     """
