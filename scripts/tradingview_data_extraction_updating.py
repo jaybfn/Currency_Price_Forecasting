@@ -12,11 +12,17 @@ from datetime import datetime
 from sqlalchemy import inspect
 from sqlalchemy import insert
 from sqlalchemy import text
+
+from sqlalchemy.orm import Session
+
 # local files
 from session import *
 from datetime import datetime, date 
 from credential import postgresql as settings
 from credential import tradingview as tv_settings
+
+from sqlalchemy.orm import Session
+from sqlalchemy import text
 
 
 # Configure logging for the program
@@ -122,26 +128,6 @@ def get_historical_data(tv: Any, symbol_exchange_dict: Dict[str, str], interval:
     # Return the populated result dictionary
     return result
 
-
-# def extract_load_data_to_postgres_db(Base,currency_symbol,historical_data):
-
-#     name = currency_symbol.lower()+'_'+'data'
-#     table_name = name
-#     # Create SQLAlchemy Base object and User class using the create_table function
-#     User = create_table(table_name, Base)
-#     # Create a SQLAlchemy session
-#     session = Sessions()
-
-#     # Log the start of data insertion into the database
-#     logging.info("Start inserting data into {}".format(table_name))
-#     # Insert the data into the database using the bulk_insert_mappings method
-#     session.bulk_insert_mappings(User,historical_data.to_dict(orient='records'))
-#     # Commit the transaction to save the changes to the database
-#     session.commit()
-#     # Log the completion of data insertion and the successful completion of the program
-#     logging.info("Data insertion completed at {}".format(datetime.now()))
-#     logging.info("Program completed successfully.")
-
 def extract_load_data_to_postgres_db(Base: declarative_base, currency_symbol: str, historical_data: pd.DataFrame) -> None:
     """
     Extracts historical market data and loads it into a PostgreSQL database table. The table name is derived from
@@ -185,33 +171,123 @@ def extract_load_data_to_postgres_db(Base: declarative_base, currency_symbol: st
     logging.info(f"Data insertion completed at {current_time}")
     logging.info("Program completed successfully.")
 
+def get_latest_date(session: Session, table_name: str) -> Any:
+    """
+    Retrieves the latest date (maximum datetime value) from a specified table in the database.
 
-def get_latest_date(session, table_name):
-    # Directly inserting the table name into the query. Ensure table_name is safe!
-    sql_query = f"SELECT max(datetime) FROM {table_name} LIMIT 5"
-    # Using text() for any user-provided values in the rest of the query
+    This function constructs a SQL query dynamically using the table name provided. It's crucial to ensure
+    that the table_name argument is safe to include directly in the query to prevent SQL injection.
+
+    Parameters:
+    - session (Session): An instance of SQLAlchemy Session for database connection and operations.
+    - table_name (str): The name of the table from which to retrieve the latest date.
+
+    Returns:
+    - Any: The latest date (maximum datetime) found in the specified table. The return type is 'Any'
+        because the datatype of the datetime column is not explicitly known here. Returns None
+        if the query result is empty.
+
+    Note:
+    The function uses the SQLAlchemy `text` function for executing a raw SQL query, ensuring that
+    the table_name parameter is interpolated safely is the responsibility of the caller.
+    """
+    # Construct SQL query string, incorporating the table name directly
+    # It's important to ensure that table_name is safe to prevent SQL injection
+    sql_query = f"SELECT max(datetime) FROM {table_name} LIMIT 1"
+
+    # Execute the SQL query and fetch the first (and only) result
     result = session.execute(text(sql_query)).fetchone()
+
+    # Return the first element of the result if it exists, else return None
     return result[0] if result else None
 
-def table_exists(session, table_name):
+def table_exists(session: Session, table_name: str) -> bool:
+    """
+    Checks if a table exists in the database.
+
+    This function queries the information_schema.tables to determine if the specified table exists within
+    the database. It uses a parameterized SQL query to safely include user-provided table names and prevent
+    SQL injection.
+
+    Parameters:
+    - session (Session): An instance of SQLAlchemy Session for database connection and operations.
+    - table_name (str): The name of the table to check for existence.
+
+    Returns:
+    - bool: True if the table exists, False otherwise.
+
+    The function prepares a parameterized query that checks for the existence of the specified table
+    by name within the database's information schema. This approach is database-agnostic but assumes
+    access to the information_schema.tables view or table.
+    """
+    # Prepare a parameterized SQL query to check table existence in the information schema
     sql = text("SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = :table_name)")
+
+    # Execute the query with the provided table_name as a parameter
     result = session.execute(sql, {'table_name': table_name}).scalar()
+
+    # The result is a boolean value indicating the existence of the table
     return result
 
-def load_data_to_postgres_db(Base,currency_symbol,historical_data, session):
+
+# def load_data_to_postgres_db(Base,currency_symbol,historical_data, session):
     
-    name = currency_symbol.lower()+'_'+'data'
+#     name = currency_symbol.lower()+'_'+'data'
+#     table_name = name
+#     # Create SQLAlchemy Base object and User class using the create_table function
+#     User = create_table(table_name, Base)
+#     # Log the start of data insertion into the database
+#     logging.info("Start inserting data into {}".format(table_name))
+#     # Insert the data into the database using the bulk_insert_mappings method
+#     session.bulk_insert_mappings(User,historical_data.to_dict(orient='records'))
+#     # Commit the transaction to save the changes to the database
+#     session.commit()
+#     # Log the completion of data insertion and the successful completion of the program
+#     logging.info("Data insertion completed at {}".format(datetime.now()))
+#     logging.info("Program completed successfully.")
+
+def load_data_to_postgres_db(Base: declarative_base, currency_symbol: str, historical_data: pd.DataFrame, session: Session) -> None:
+    """
+    Loads historical market data into a PostgreSQL database for a specific currency symbol. 
+    It dynamically creates a new database table based on the currency symbol, then inserts the data.
+
+    Parameters:
+    - Base (declarative_base): The SQLAlchemy declarative base, used to generate ORM models.
+    - currency_symbol (str): The currency symbol, which influences the table name (`<symbol>_data`).
+    - historical_data (pd.DataFrame): The historical data to load into the database. 
+    The data should be in a DataFrame format.
+    - session (Session): An instance of SQLAlchemy Session for executing database transactions.
+
+    Returns:
+    None: The function does not return a value. It logs the progress of data insertion.
+
+    This function first constructs a table name from the currency symbol, then uses a custom function
+    `create_table` to dynamically create a new table model. It logs the start of the data insertion process,
+    uses the `bulk_insert_mappings` method to insert data efficiently, commits the transaction, and logs
+    the successful completion of data insertion.
+    """
+    # Construct table name from currency symbol
+    name = currency_symbol.lower() + '_data'
     table_name = name
-    # Create SQLAlchemy Base object and User class using the create_table function
+
+    # Dynamically create a table model using the provided Base and table name
     User = create_table(table_name, Base)
-    # Log the start of data insertion into the database
-    logging.info("Start inserting data into {}".format(table_name))
-    # Insert the data into the database using the bulk_insert_mappings method
-    session.bulk_insert_mappings(User,historical_data.to_dict(orient='records'))
-    # Commit the transaction to save the changes to the database
+
+    # Log the initiation of data insertion
+    logging.info(f"Start inserting data into {table_name}")
+
+    # Convert DataFrame into a list of dictionaries for bulk insertion
+    data_to_insert = historical_data.to_dict(orient='records')
+
+    # Perform bulk insertion of data into the database
+    session.bulk_insert_mappings(User, data_to_insert)
+
+    # Commit the transaction to finalize data insertion
     session.commit()
-    # Log the completion of data insertion and the successful completion of the program
-    logging.info("Data insertion completed at {}".format(datetime.now()))
+
+    # Log the completion of data insertion and the program's success
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    logging.info(f"Data insertion completed at {current_time}")
     logging.info("Program completed successfully.")
 
 def process_historical_data(tv, symbol_exchange_dict, settings):
@@ -256,7 +332,14 @@ def process_historical_data(tv, symbol_exchange_dict, settings):
         for symbol, data in new_historical_data.items():
             symbol_name, symbol_data = symbol, data
             table_name = symbol_name.lower() + '_data'
-            data = symbol_data.loc[symbol_data['datetime'].dt.date > latest_date.date()]
+            if symbol_data is not None:
+                try:
+                    data = symbol_data.loc[symbol_data['datetime'].dt.date > latest_date.date()]
+                except AttributeError as e:
+                    logging.error(f"Unexpected error occurred while filtering symbol_data: {e}")
+            else:
+                logging.warning("symbol_data is None, cannot proceed with filtering or further processing.")
+
             if 'index' in data.columns:
                 data = data.drop(columns=['index'])
             data.loc[:, 'datetime'] = pd.to_datetime(data['datetime'].dt.date)
