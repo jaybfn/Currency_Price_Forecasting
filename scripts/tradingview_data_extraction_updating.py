@@ -1,5 +1,6 @@
 from tvDatafeed import TvDatafeed, Interval
 
+from typing import Dict, Optional, Any
 import pandas as pd
 import numpy as np
 import argparse
@@ -70,23 +71,55 @@ def create_table(table_name, Base):
     return User
 
 
-def get_historical_data(tv, symbol_exchange_dict, interval, n_bars):
+def get_historical_data(tv: Any, symbol_exchange_dict: Dict[str, str], interval: str, n_bars: int) -> Dict[str, Optional[pd.DataFrame]]:
+
+    """
+        Fetches historical market data for a set of symbols from a given exchange, over a specified interval 
+        and number of bars. Adjusts the number of bars for specific symbols if needed.
+
+        Parameters:
+        - tv (Any): An object/interface to access historical market data. Assumed to have a method get_hist().
+                    The type is specified as Any since the exact type depends on the implementation of the
+                    historical data retrieval interface.
+        - symbol_exchange_dict (Dict[str, str]): A dictionary mapping symbols to their respective exchanges. 
+                                                Example: {'AAPL': 'NASDAQ', 'BTCUSD': 'BINANCE'}
+        - interval (str): The time interval for the data points. For example, '1d' for daily data.
+        - n_bars (int): The number of data points/bars to retrieve. This is adjusted for certain symbols.
+
+        Returns:
+        Dict[str, Optional[pd.DataFrame]]: A dictionary with symbols as keys and their corresponding historical data as 
+                                            values. If no data is returned for a symbol, the value will be None. 
+
+        The function handles a special case for the symbol 'USCCPI', where it overrides the default number
+        of bars to 500, assuming this symbol requires a longer historical data span.
+
+        Note: This function requires the 'logging' module for logging missing data information.
+    """
+
+    # Initialize an empty dictionary to store the result
     result = {}
+    
+    # Iterate over the symbol_exchange_dict to fetch data for each symbol
     for symbol, exchange in symbol_exchange_dict.items():
-        # Adjust the n_bars based on the symbol
+        # Adjust the n_bars for the 'USCCPI' symbol, as it requires more historical data
         effective_n_bars = n_bars if symbol != 'USCCPI' else 500
+        
+        # Fetch historical data using the provided interface and the adjusted number of bars
         data = tv.get_hist(symbol=symbol, exchange=exchange, interval=interval, n_bars=effective_n_bars)
         
-        # Check if data is not None before proceeding
+        # Check if data is returned
         if data is not None:
+            # Reset index for cleaner DataFrame format
             data.reset_index(inplace=True)
+            # Add the data to the result dictionary
             result[symbol] = data
         else:
-            # Notify or handle the absence of data explicitly
+            # Log the absence of data for a specific symbol and exchange
             logging.info(f"No data returned for {symbol} on {exchange}")
-            # For example, set the result to None or an empty DataFrame
-            result[symbol] = None  # or pd.DataFrame(), depending on how you want to handle this scenario
+            # Handle missing data by setting the result to None
+            result[symbol] = None
     
+    # Return the populated result dictionary
     return result
 
 
