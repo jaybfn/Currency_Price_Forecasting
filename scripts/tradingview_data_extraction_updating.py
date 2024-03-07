@@ -319,22 +319,34 @@ def process_historical_data(tv, symbol_exchange_dict, settings):
             if symbol_data is not None:
                 try:
                     data = symbol_data.loc[symbol_data['datetime'].dt.date > latest_date.date()]
+
+                    if 'index' in data.columns:
+                        data = data.drop(columns=['index'])
+                    data.loc[:, 'datetime'] = pd.to_datetime(data['datetime'].dt.date)
+                    data = data.drop(columns=['symbol'])
+                    # updating the table with new data!
+                    data.to_sql(table_name, con= get_engine(settings['pguser'], 
+                                    settings['pgpass'], 
+                                    settings['host'], 
+                                    settings['port'], 
+                                    settings['pgdb']), if_exists='append', index=False)
+                    logging.info(f"Appended new historical data for {symbol_name} into the database.")
                 except AttributeError as e:
                     logging.error(f"Unexpected error occurred while filtering symbol_data: {e}")
             else:
                 logging.warning("symbol_data is None, cannot proceed with filtering or further processing.")
 
-            if 'index' in data.columns:
-                data = data.drop(columns=['index'])
-            data.loc[:, 'datetime'] = pd.to_datetime(data['datetime'].dt.date)
-            data = data.drop(columns=['symbol'])
-            # updating the table with new data!
-            data.to_sql(table_name, con= get_engine(settings['pguser'], 
-                            settings['pgpass'], 
-                            settings['host'], 
-                            settings['port'], 
-                            settings['pgdb']), if_exists='append', index=False)
-            logging.info(f"Appended new historical data for {symbol_name} into the database.")
+            # if 'index' in data.columns:
+            #     data = data.drop(columns=['index'])
+            # data.loc[:, 'datetime'] = pd.to_datetime(data['datetime'].dt.date)
+            # data = data.drop(columns=['symbol'])
+            # # updating the table with new data!
+            # data.to_sql(table_name, con= get_engine(settings['pguser'], 
+            #                 settings['pgpass'], 
+            #                 settings['host'], 
+            #                 settings['port'], 
+            #                 settings['pgdb']), if_exists='append', index=False)
+            # logging.info(f"Appended new historical data for {symbol_name} into the database.")
 
 if __name__ == '__main__':
     DynamicBase = declarative_base()
